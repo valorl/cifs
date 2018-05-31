@@ -49,10 +49,14 @@ set -u
 #         mountOptions: "dir_mode=0755,file_mode=0644,noperm"
 # --------------------------------------------------------------------
 
-# Uncomment the following lines to see how this plugin is called:
-# echo >> /tmp/cifs.log
-# date >> /tmp/cifs.log
-# echo "$@" >> /tmp/cifs.log
+LOGFILE="$LOGFILE"
+# Redirect everything to $LOGFILE
+exec >> $LOGFILE
+exec 2>&1
+# Log call 
+echo
+date
+echo "$@"
 
 init() {
 	assertBinaryInstalled mount.cifs cifs-utils

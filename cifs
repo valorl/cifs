@@ -49,7 +49,7 @@ set -u
 #         mountOptions: "dir_mode=0755,file_mode=0644,noperm"
 # --------------------------------------------------------------------
 
-LOGFILE="$LOGFILE"
+LOGFILE="/tmp/cifs.log"
 # Redirect everything to $LOGFILE
 exec >> $LOGFILE
 exec 2>&1
